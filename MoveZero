@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+
+void moveZeroes(std::vector<int>& nums) {
+    int slowPtr = 0;
+    // Move all non-zero elements to the front
+    for (int fastPtr = 0; fastPtr < nums.size(); fastPtr++) {
+        if (nums[fastPtr] != 0) {
+            nums[slowPtr] = nums[fastPtr];
+            slowPtr++;
+        }
+    }
+
+    // Fill the remaining positions with zeros
+    while (slowPtr < nums.size()) {
+        nums[slowPtr] = 0;
+        slowPtr++;
+    }
+}
+
+int main() {
+    std::vector<int> nums = {0, 1, 0, 3, 12};
+
+    moveZeroes(nums);
+
+    std::cout << "Modified Array: ";
+    for (int num : nums) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
